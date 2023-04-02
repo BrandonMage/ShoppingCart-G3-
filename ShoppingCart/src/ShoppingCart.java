@@ -131,7 +131,7 @@ public class ShoppingCart {
 
     //Getting the prices
     private static double getPrice(int productNumber) {
-        double price = 0.0;
+        double price;
         switch(productNumber) {
             case 1:
                 price = 10.99;
@@ -171,7 +171,7 @@ public class ShoppingCart {
 
     private static void checkout(double totalPrice) {
         System.out.println("Processing...");
-        System.out.println("succesfully paid " + formatPrice(totalPrice) + ". Thank you!");
+        System.out.println("successfully paid " + formatPrice(totalPrice) + ". Thank you!");
         displayCheckoutCommands();
         int command = promptForCheckoutCommand();
         switch (command) {
