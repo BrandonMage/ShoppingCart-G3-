@@ -12,8 +12,6 @@ public class ShoppingCart {
         products.put(1, "Product 1");
         products.put(2, "Product 1");
         products.put(3, "Product 3");
-
-    
         
         while (true) {
             displayProducts();
@@ -35,7 +33,14 @@ public class ShoppingCart {
                     break;
                 case 4:
                     System.exit(0);
-            }
+                }
+            } 
+        }
 
-  } 
-}
+        private static void displayProducts() {
+            for (int i = 1; i <= products.size(); i++) {
+                System.out.println(i + ". " + products.get(i));
+            }
+        }
+
+        
