@@ -72,5 +72,81 @@ public class ShoppingCart {
             }
             return command;
         }
+        
+        //Adding a product to cart
+        private static void addToCart(int productNumber) {
+            String productName = products.get(productNumber);
+            System.out.print("Enter the quantity you want to add: ");
+            int quantity = scanner.nextInt();
+            if (cart.containsKey(productNumber)) {
+                quantity += cart.get(productNumber);
+            }
+            cart.put(productNumber, quantity);
+            System.out.println(quantity + " " + productName + " added to cart.");
+        }
 
+        //Removing a product from cart
+        private static void removeFromCart(int productNumber) {
+            String productName = products.get(productNumber);
+            if (!cart.containsKey(productNumber)) {
+                System.out.println(productName + " is not in the cart.");
+                return;
+            }
+            int currentQuantity = cart.get(productNumber);
+            System.out.print("Enter the quantity you want to remove: ");
+            int quantity = scanner.nextInt();
+            if (quantity >= currentQuantity) {
+                cart.remove(productNumber);
+            } else {
+                cart.put(productNumber, currentQuantity - quantity);
+            }
+            System.out.println(quantity + " " + productName + " removed from cart.");
+        }
+
+        //Viewing the products on the cart
+        private static void viewCart() {
+            double totalPrice = 0;
+            System.out.println("Cart:");
+            for (int productNumber : cart.keySet()) {
+                String productName = products.get(productNumber);
+                int quantity = cart.get(productNumber);
+                double price = quantity * getPrice(productNumber);
+                System.out.println(quantity + " " + productName + " - " + formatPrice(price));
+                totalPrice += price;
+            }
+            System.out.println("Total price: " + formatPrice(totalPrice));
+            displayCartCommands();
+            int command = promptForCartCommand();
+            switch (command) {
+                case 1:
+                    displayProducts();
+                    break;
+                case 2:
+                    checkout(totalPrice);
+                    break;
+                case 3:
+                    System.exit(0);
+            }
+        }
+
+        //Getting the prices
+        private static double getPrice(int productNumber) {
+            double price = 0.0;
+            switch(productNumber) {
+                case 1:
+                    price = 10.99;
+                    break;
+                case 2:
+                    price = 24.99;
+                    break;
+                case 3:
+                    price = 7.50;
+                    break;
+                default:
+                    price = 0.0;
+                    break;
+            }
+            return price;
+        }
+ 
         
