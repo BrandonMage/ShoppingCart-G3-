@@ -182,5 +182,23 @@ public class ShoppingCart {
                  displayProducts();
                  break;
              case 3:
-                 System.exit(0);
+                 System.exit(0);     }
+    }
+
+    private static void displayCheckoutCommands() {
+        System.out.println("1. Continue shopping");
+        System.out.println("2. View products");
+        System.out.println("3. Exit");
+    }
+
+    private static int promptForCheckoutCommand() {
+        System.out.print("Enter the number of the command you want to execute: ");
+        int command = scanner.nextInt();
+        if (command < 1 || command > 3) {
+            System.out.println("Invalid command number.");
+            promptForCheckoutCommand();
+        }
+        return command;
+    }}
+
         
