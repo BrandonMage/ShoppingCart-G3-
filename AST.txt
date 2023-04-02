@@ -1,0 +1,157 @@
+CompilationUnit
+    |
+  PackageDeclaration - package java.util
+    |
+  PackageDeclaration - package ShoppingCart
+    |
+  ImportDeclaration - import java.util.HashMap
+    |
+  ImportDeclaration - import java.util.Scanner
+    |
+  ClassDeclaration - public class ShoppingCart
+        |
+      FieldDeclaration - private static HashMap<Integer, String> products
+        |                   (initialized with values in main method)
+      FieldDeclaration - private static HashMap<Integer, Integer> cart
+        |                   (initialized with values in addToCart and removeFromCart methods)
+      FieldDeclaration - private static Scanner scanner
+        |                   (initialized with value in main method)
+        |
+      MethodDeclaration - public static void main(String[] args)
+            |
+          BlockStmt
+                |
+              MethodCallExpr - displayProducts
+                    |
+                  ThisExpr
+                    |
+                  SimpleName - displayProducts
+                |
+              VariableDeclarationExpr - int productNumber
+                |
+              WhileStmt
+                    |
+                  BooleanLiteralExpr - true
+                    |
+                  BlockStmt
+                        |
+                      MethodCallExpr - displayProducts
+                            |
+                          ThisExpr
+                            |
+                          SimpleName - displayProducts
+                        |
+                      VariableDeclarationExpr - int productNumber
+                        |
+                      IfStmt
+                            |
+                          BinaryExpr - productNumber == -1
+                            |              |
+                            |              IntegerLiteralExpr - -1
+                            |              |
+                            |              SimpleName - productNumber
+                            |
+                          BlockStmt - break
+                                |
+                              BreakStmt
+                        |
+                      MethodCallExpr - displayCommands
+                            |
+                          ThisExpr
+                            |
+                          SimpleName - displayCommands
+                        |
+                      VariableDeclarationExpr - int command
+                        |
+                      SwitchStmt - command
+                            |
+                          SimpleName - command
+                            |
+                          SwitchEntryStmt - case 1
+                            |
+                          MethodCallExpr - addToCart
+                                |
+                              ThisExpr
+                                |
+                              SimpleName - addToCart
+                                |
+                              NameExpr - productNumber
+                            |
+                          BreakStmt
+                            |
+                          SwitchEntryStmt - case 2
+                            |
+                          MethodCallExpr - removeFromCart
+                                |
+                              ThisExpr
+                                |
+                              SimpleName - removeFromCart
+                                |
+                              NameExpr - productNumber
+                            |
+                          BreakStmt
+                            |
+                          SwitchEntryStmt - case 3
+                            |
+                          MethodCallExpr - viewCart
+                                |
+                              ThisExpr
+                                |
+                              SimpleName - viewCart
+                            |
+                          BreakStmt
+                            |
+                          SwitchEntryStmt - case 4
+                            |
+                          MethodCallExpr - System.exit
+                                |
+                              FieldAccessExpr - System.exit
+                                    |
+                                  NameExpr - System
+                                    |
+                                  SimpleName - exit
+                                |
+                              IntegerLiteralExpr - 0
+                            |
+                          BreakStmt
+        |
+      MethodDeclaration - private static void displayProducts()
+            |
+          BlockStmt
+                |
+              ForStmt - int i = 1; i <= products.size(); i++
+                    |
+                  VariableDeclarationExpr - int i = 1
+                    |
+                  BinaryExpr - i <= products.size()
+                    |           |
+                    |           SimpleName - i
+                    |           |
+                    |           MethodCallExpr - size
+                    |                    |
+                    |                  NameExpr - products
+                    |
+                  AssignExpr - i++
+                    |          |
+                    |          SimpleName - i
+                    |          |
+                    |          IntegerLiteralExpr - 1
+                    |
+                  BlockStmt
+                        |
+                      MethodCallExpr - System.out.println
+                            |
+                          FieldAccessExpr - System.out.println
+                                |
+                              NameExpr - System
+                                |
+                              SimpleName - out
+                                |
+                              StringLiteralExpr - "i. productName"
+                                |
+                              BinaryExpr - +
+                                    |
+                                  BinaryExpr - +
+                                        |
+                                      SimpleName - i
+                                        |
