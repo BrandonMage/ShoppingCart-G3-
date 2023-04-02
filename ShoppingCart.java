@@ -13,5 +13,29 @@ public class ShoppingCart {
         products.put(2, "Product 1");
         products.put(3, "Product 3");
 
+    
+        
+        while (true) {
+            displayProducts();
+            int productNumber = promptForProductNumber();
+            if (productNumber == -1) {
+                break;
+            }
+            displayCommands();
+            int command = promptForCommand();
+            switch (command) {
+                case 1:
+                    addToCart(productNumber);
+                    break;
+                case 2:
+                    removeFromCart(productNumber);
+                    break;
+                case 3:
+                    viewCart();
+                    break;
+                case 4:
+                    System.exit(0);
+            }
+
   } 
 }
