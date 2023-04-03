@@ -42,5 +42,35 @@ public class ShoppingCart {
                 System.out.println(i + ". " + products.get(i));
             }
         }
+        
+        // Prompts the user to enter a product number
+        private static int promptForProductNumber() {
+            System.out.print("Enter the number of the product you want to buy (-1 to exit): ");
+            int productNumber = scanner.nextInt();
+            if (productNumber < -1 || productNumber > products.size()) {
+                System.out.println("Invalid product number.");
+                promptForProductNumber();
+            }
+            return productNumber;
+        }
+        
+        // Displays the commands
+        private static void displayCommands() {
+            System.out.println("1. Add to cart");
+            System.out.println("2. Remove from cart");
+            System.out.println("3. View cart");
+            System.out.println("4. Exit");
+        }
+        
+        // Prompts the user to enter a command
+        private static int promptForCommand() {
+            System.out.print("Enter the number of the command you want to execute: ");
+            int command = scanner.nextInt();
+            if (command < 1 || command > 4) {
+                System.out.println("Invalid command number.");
+                promptForCommand();
+            }
+            return command;
+        }
 
         
