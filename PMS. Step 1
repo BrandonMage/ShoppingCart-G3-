@@ -1,0 +1,22 @@
+//---------------------------------------------------------------------------
+
+#include <fmx.h>
+#pragma hdrstop
+
+#include "mainform.h"
+#include "loginform.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.fmx"
+Tmymainform *mymainform;
+//---------------------------------------------------------------------------
+__fastcall Tmymainform::Tmymainform(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall Tmymainform::loginNavigationButtonClick(TObject *Sender)
+{
+   myloginform->Show();
+}
+//---------------------------------------------------------------------------
